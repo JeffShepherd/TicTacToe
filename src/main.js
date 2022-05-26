@@ -1,0 +1,1 @@
+let currentGame = new Game()
