@@ -21,7 +21,6 @@ class Game {
  takeTurn(boardSpace) {
   if(this.checkForOpenSpace()) {
     this.gameBoard[boardspace] = this.turn === 1 ? this.playerOne.token : this.playerTwo.token
-    // check for winner?
   } else {
     return false
   }
@@ -33,6 +32,56 @@ class Game {
   } else {
     return false
   }
+ }
+
+  checkForDraw() {
+    const emptySpaces = this.gameBoard.filter(space => space === 0)
+    
+    if(emptySpaces.length) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+ checkForWinner() {
+  if(this.checkForHorizontalWin() || this.checkForVerticalWin() || this.checkForDiagWin()) {
+    return true
+  }
+  return false
+ }
+
+ checkForHorizontalWin() {
+  if(!this.gameBoard[0] || this.gameBoard[0] != this.gameBoard[1] || this.gameBoard[1] != this.gameBoard[2]){
+    return false
+  } else if(!this.gameBoard[3] || this.gameBoard[3] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[5]){
+    return false
+  } else if(!this.gameBoard[6] || this.gameBoard[6] != this.gameBoard[7] || this.gameBoard[7] != this.gameBoard[8]){
+    return false
+  }
+  return true
+ }
+
+ checkForVerticalWin() {
+  if(!this.gameBoard[0] || this.gameBoard[0] != this.gameBoard[3] || this.gameBoard[3] != this.gameBoard[6]){
+    return false
+  } else if(!this.gameBoard[1] || this.gameBoard[1] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[7]){
+    return false
+  } else if(!this.gameBoard[2] || this.gameBoard[2] != this.gameBoard[5] || this.gameBoard[5] != this.gameBoard[8]){
+    return false
+  }
+  return true
+ }
+ 
+ checkForDiagWin() {
+  if(!this.gameBoard[4]) {
+    return false
+  } else if(this.gameBoard[0] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[8]) {
+    return false
+  } else if(this.gameBoard[2] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[6]) {
+    return false
+  }
+  return true
  }
 
 }
