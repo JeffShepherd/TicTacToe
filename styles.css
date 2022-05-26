@@ -1,0 +1,27 @@
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  display: flex;
+}
+
+
+.text {
+  text-align: center;
+}
+
+
+
+
+#left-section,#right-section {
+  height: 100%;
+  width: 25%;
+  background-color: lightgray;
+}
+
+#middle-section {
+  height: 100%;
+  width: 50%;
+  background-color: lightseagreen;
+}
