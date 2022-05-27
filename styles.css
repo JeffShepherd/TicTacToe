@@ -6,13 +6,23 @@ body {
   display: flex;
 }
 
-
 .text {
   text-align: center;
 }
 
+.grid-square {
+  background-color: whitesmoke;
+}
 
-
+#grid-container {
+  width: 80%;
+  height: 50%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.5rem;
+  background-color: black;
+}
 
 #left-section,#right-section {
   height: 100%;
@@ -24,4 +34,6 @@ body {
   height: 100%;
   width: 50%;
   background-color: lightseagreen;
+  display: flex;
+  flex-direction: column;
 }
