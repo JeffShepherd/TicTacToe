@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.playerOne = new Player(1, 'test1'),
     this.playerTwo = new Player(2, 'test2'),
+    this.startingPlayer = 1,
     this.turn = 1,
     this.gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]
   }
@@ -18,9 +19,19 @@ class Game {
    }
  }
 
+ switchStartingPlayer() {
+   if(this.startingPlayer === 1) {
+    this.startingPlayer = 2
+   } else {
+     this.startingPlayer = 1
+   }
+   this.turn = this.startingPlayer
+ }
+
  takeTurn(boardSpace) {
   if(this.checkForOpenSpace()) {
     this.gameBoard[boardspace] = this.turn === 1 ? this.playerOne.token : this.playerTwo.token
+    return true
   } else {
     return false
   }
