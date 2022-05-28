@@ -25,20 +25,27 @@ function processGameBoardClick(id) {
 function checkForWinOrDraw() {
 
   if(currentGame.checkForWinner()) {
-    // update game and DOM for win
     console.log('win')
+
     middleMessage.innerText = `Player ${currentGame.turn} WINS!`
-    currentGame.switchStartingPlayer()
+    setTimeout(startNewGame, 5000)
     return
   } else if(currentGame.checkForDraw()) {
-    // update game and DOM for draw
     console.log('draw')
-    currentGame.switchStartingPlayer()
+
     middleMessage.innerText = 'Game ends in a DRAW!'
+    setTimeout(startNewGame, 5000)
     return
   }
 
   currentGame.switchTurn()
+}
+
+function startNewGame() {
+  currentGame.switchStartingPlayer()
+  currentGame.resetGameBoard()
+  populateGameBoard()
+  // middleMessage.innerText = `Player ${currentGame.turn}'s turn`
 }
 
 function populateGameBoard() {
