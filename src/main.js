@@ -51,9 +51,9 @@ function populateGameBoard() {
   let counter = 0
   currentGame.gameBoard.forEach(space => {
     if(space) {
-      grid += `<div id="${counter}" class="grid-square">${space}</div>`
+      grid += `<div id="${counter}" class="grid-square center-text">${space}</div>`
     } else {
-      grid += `<div id="${counter}" class="grid-square"></div>`
+      grid += `<div id="${counter}" class="grid-square center-text"></div>`
     }
     counter ++
   })
