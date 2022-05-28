@@ -39,13 +39,14 @@ function checkForWinOrDraw() {
   }
 
   currentGame.switchTurn()
+  middleMessage.innerText = `Player ${currentGame.turn}'s turn`
 }
 
 function startNewGame() {
   currentGame.switchStartingPlayer()
   currentGame.resetGameBoard()
   populateGameBoard()
-  // middleMessage.innerText = `Player ${currentGame.turn}'s turn`
+  middleMessage.innerText = `Player ${currentGame.turn}'s turn`
 }
 
 function populateGameBoard() {
