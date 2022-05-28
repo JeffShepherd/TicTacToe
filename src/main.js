@@ -2,6 +2,8 @@ let currentGame = new Game()
 
 let gameBoard = document.getElementById('grid-container')
 let middleMessage = document.getElementById('middle-message')
+let playerOneWins = document.getElementById('player-one-wins')
+let playerTwoWins= document.getElementById('player-two-wins')
 
 gameBoard.addEventListener('click', function(event) {
   processGameBoardClick(event.target.id)
@@ -28,6 +30,7 @@ function checkForWinOrDraw() {
     console.log('win')
 
     middleMessage.innerText = `Player ${currentGame.turn} WINS!`
+    updateWinCount()
     setTimeout(startNewGame, 5000)
     return
   } else if(currentGame.checkForDraw()) {
@@ -47,6 +50,11 @@ function startNewGame() {
   currentGame.resetGameBoard()
   populateGameBoard()
   middleMessage.innerText = `Player ${currentGame.turn}'s turn`
+}
+
+function updateWinCount() {
+  playerOneWins.innerText = `${currentGame.playerOne.wins} wins`
+  playerTwoWins.innerText = `${currentGame.playerTwo.wins} wins`
 }
 
 function populateGameBoard() {
