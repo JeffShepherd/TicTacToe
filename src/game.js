@@ -47,7 +47,6 @@ class Game {
 
   checkForDraw() {
     const emptySpaces = this.gameBoard.filter(space => space === 0)
-    
     if(emptySpaces.length) {
       return false
     } else {
@@ -68,47 +67,35 @@ class Game {
     this.addToWinCount()
     return true
   }
-  console.log('no win')
   return false
  }
 
  checkForHorizontalWin() {
-   console.log('hor')
   if(this.gameBoard[0] && this.gameBoard[0] === this.gameBoard[1] && this.gameBoard[1] === this.gameBoard[2]){
-    console.log('11')
     return true
   } else if(this.gameBoard[3] && this.gameBoard[3] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[5]){
-    console.log('22')
     return true
   } else if(this.gameBoard[6] && this.gameBoard[6] === this.gameBoard[7] && this.gameBoard[7] === this.gameBoard[8]){
-    console.log('33')
     return true
   }
   return false
  }
 
  checkForVerticalWin() {
-      console.log('vert')
   if(this.gameBoard[0] && this.gameBoard[0] === this.gameBoard[3] && this.gameBoard[3] === this.gameBoard[6]){
-    console.log('44')
     return true
   } else if(this.gameBoard[1] && this.gameBoard[1] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[7]){
-    console.log('55')
     return true
   } else if(this.gameBoard[2] && this.gameBoard[2] === this.gameBoard[5] && this.gameBoard[5] === this.gameBoard[8]){
-    console.log('66')
     return true
   }
   return false
  }
  
  checkForDiagWin() {
-  console.log('diag')
   if(this.gameBoard[4] && this.gameBoard[0] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[8]) {
-    console.log('77')
     return true
   } else if(this.gameBoard[4] && this.gameBoard[2] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[6]) {
-    console.log('88')
     return true
   }
   return false
