@@ -1,8 +1,8 @@
 class Player {
-  constructor(id, token, wins) {
+  constructor(id, token) {
     this.id = id,
     this.token = token,
-    this.wins = wins || 0
+    this.wins = 0
   }
 
   addWin() {
