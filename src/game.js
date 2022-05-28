@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-    this.playerOne = new Player(1, 'test1'),
-    this.playerTwo = new Player(2, 'test2'),
+    this.playerOne = new Player(1, "X"),
+    this.playerTwo = new Player(2, "O"),
     this.startingPlayer = 1,
     this.turn = 1,
     this.gameBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -29,8 +29,8 @@ class Game {
  }
 
  takeTurn(boardSpace) {
-  if(this.checkForOpenSpace()) {
-    this.gameBoard[boardspace] = this.turn === 1 ? this.playerOne.token : this.playerTwo.token
+  if(this.checkForOpenSpace(boardSpace)) {
+    this.gameBoard[boardSpace] = this.turn === 1 ? this.playerOne.token : this.playerTwo.token
     return true
   } else {
     return false
@@ -55,44 +55,63 @@ class Game {
     }
   }
 
+  addToWinCount() {
+    if(this.turn === 1) {
+      this.playerOne.wins ++
+    } else {
+      this.playerTwo.wins ++
+    }
+  }
+
  checkForWinner() {
   if(this.checkForHorizontalWin() || this.checkForVerticalWin() || this.checkForDiagWin()) {
+    this.addToWinCount()
+    return true
+  }
+  console.log('no win')
+  return false
+ }
+
+ checkForHorizontalWin() {
+   console.log('hor')
+  if(this.gameBoard[0] && this.gameBoard[0] === this.gameBoard[1] && this.gameBoard[1] === this.gameBoard[2]){
+    console.log('11')
+    return true
+  } else if(this.gameBoard[3] && this.gameBoard[3] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[5]){
+    console.log('22')
+    return true
+  } else if(this.gameBoard[6] && this.gameBoard[6] === this.gameBoard[7] && this.gameBoard[7] === this.gameBoard[8]){
+    console.log('33')
     return true
   }
   return false
  }
 
- checkForHorizontalWin() {
-  if(!this.gameBoard[0] || this.gameBoard[0] != this.gameBoard[1] || this.gameBoard[1] != this.gameBoard[2]){
-    return false
-  } else if(!this.gameBoard[3] || this.gameBoard[3] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[5]){
-    return false
-  } else if(!this.gameBoard[6] || this.gameBoard[6] != this.gameBoard[7] || this.gameBoard[7] != this.gameBoard[8]){
-    return false
-  }
-  return true
- }
-
  checkForVerticalWin() {
-  if(!this.gameBoard[0] || this.gameBoard[0] != this.gameBoard[3] || this.gameBoard[3] != this.gameBoard[6]){
-    return false
-  } else if(!this.gameBoard[1] || this.gameBoard[1] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[7]){
-    return false
-  } else if(!this.gameBoard[2] || this.gameBoard[2] != this.gameBoard[5] || this.gameBoard[5] != this.gameBoard[8]){
-    return false
+      console.log('vert')
+  if(this.gameBoard[0] && this.gameBoard[0] === this.gameBoard[3] && this.gameBoard[3] === this.gameBoard[6]){
+    console.log('44')
+    return true
+  } else if(this.gameBoard[1] && this.gameBoard[1] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[7]){
+    console.log('55')
+    return true
+  } else if(this.gameBoard[2] && this.gameBoard[2] === this.gameBoard[5] && this.gameBoard[5] === this.gameBoard[8]){
+    console.log('66')
+    return true
   }
-  return true
+  return false
  }
  
  checkForDiagWin() {
-  if(!this.gameBoard[4]) {
-    return false
-  } else if(this.gameBoard[0] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[8]) {
-    return false
-  } else if(this.gameBoard[2] != this.gameBoard[4] || this.gameBoard[4] != this.gameBoard[6]) {
-    return false
+  console.log('diag')
+  if(this.gameBoard[4] && this.gameBoard[0] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[8]) {
+    console.log('77')
+    return true
+  } else if(this.gameBoard[4] && this.gameBoard[2] === this.gameBoard[4] && this.gameBoard[4] === this.gameBoard[6]) {
+    console.log('88')
+    return true
   }
-  return true
+  return false
  }
 
 }
